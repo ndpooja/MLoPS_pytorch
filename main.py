@@ -24,11 +24,11 @@ def train(lr, batch_size, num_epochs):
     print(batch_size)
 
     # TODO: Implement training loop here
-    model = myawesomemodel.to(device)
+    training_model = myawesomemodel.to(device)
     train_set, _ = mnist()
     train_loader = torch.utils.data.DataLoader(train_set, batch_size=batch_size, shuffle=True)
 
-    optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+    optimizer = torch.optim.Adam(training_model.parameters(), lr=lr)
     loss_fn = torch.nn.CrossEntropyLoss()
 
     for epoch in range(num_epochs):
@@ -37,14 +37,14 @@ def train(lr, batch_size, num_epochs):
             images, labels = batch
             images = images.to(device)
             labels = labels.to(device)
-            outputs = model(images)
+            outputs = training_model(images)
             loss = loss_fn(outputs, labels)
             loss.backward()
             optimizer.step()
 
         print(f"Epoch {epoch} Loss {loss}")
 
-    torch.save(model, "model.pt")   
+    torch.save(training_model, "trained_model.pt")   
 
 @click.command()
 @click.argument("model_checkpoint")
