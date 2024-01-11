@@ -24,7 +24,11 @@ def train(lr, batch_size, num_epochs):
     print(batch_size)
 
     # TODO: Implement training loop here
+<<<<<<< HEAD
     training_model = myawesomemodel.to(device)
+=======
+    trainingmodel = myawesomemodel.to(device)
+>>>>>>> origin/main
     train_set, _ = mnist()
     train_loader = torch.utils.data.DataLoader(train_set, batch_size=batch_size, shuffle=True)
 
@@ -44,7 +48,11 @@ def train(lr, batch_size, num_epochs):
 
         print(f"Epoch {epoch} Loss {loss}")
 
+<<<<<<< HEAD
     torch.save(training_model, "trained_model.pt")   
+=======
+    torch.save(trainingmodel, "model.pt")   
+>>>>>>> origin/main
 
 @click.command()
 @click.argument("model_checkpoint")
